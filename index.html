@@ -6,6 +6,26 @@
 <title>🇪🇸 DELE B1 冲刺题库 · 180天</title>
 <style>
 :root{
+  --primary:#e8590c;--primary-light:#fff4e6;
+  --green:#2f9e44;--red:#e03131;
+  --bg:#f1f3f5;--card:#fff;--text:#212529;
+  --radius:16px;--shadow:0 2px 8px rgba(0,0,0,0.08);
+}
+.watermark-layer{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:9999;
+  overflow:hidden;
+}
+.watermark-item{
+  position:absolute;
+  color:rgba(128,128,128,0.18);
+  font-size:16px;
+  white-space:nowrap;
+  transform:rotate(-20deg);
+}
+</style>
 --primary:#e8590c;--primary-light:#fff4e6;--primary-dark:#d9480f;
 --green:#2f9e44;--red:#e03131;--blue:#1971c2;--purple:#7048e8;--teal:#0c8599;
 --bg:#f1f3f5;--card:#fff;--text:#212529;--muted:#868e96;--border:#e9ecef;
@@ -232,7 +252,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei
 <div class="hero-stat"><div class="num" id="heroRate">0%</div><div class="label">正确率</div></div>
 </div>
 </div>
-
+  
+<div style="background:#fff7e6; padding:10px 14px; border-radius:8px; margin:12px 0; font-size:13px; color:#8b5a2b; line-height:1.5;">
+📌 提示：本产品并非最终版本，后台会持续更新扩充题库内容、优化使用体验。遇到问题请勿着急，欢迎及时反馈，我们会持续迭代优化！
+</div>
+  
 <div class="daily-goal">
 <div class="daily-goal-header">
 <span class="daily-goal-title">🎯 今日目标</span>
@@ -270,7 +294,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei
 
 <div class="copyright-bar">
   <strong>🔐 授权学习内容</strong><br>
-  本题库仅限购买用户个人学习使用。未经许可，禁止：<br>
+  本题库仅限阿蛋的学习用户个人学习使用。未经许可，禁止：<br>
   ❌ 复制 · ❌ 转售 · ❌ 分享 · ❌ 二次发布 · ❌ 商业使用 · ❌ 批量提取题库内容<br>
   如发现未经授权传播，请停止使用并联系课程提供者。
 </div>
@@ -878,7 +902,28 @@ if (document.readyState !== 'loading') {
 }
 
 // 初始化（认证通过后才执行initHome）
+// 生成页面水印：阿蛋的DELE题库
+(function createWatermark(){
+const wrap = document.querySelector('.watermark-layer');
+const text = "阿蛋的DELE题库";
+const rows = 12;
+const cols = 8;
+for(let r=0;r<rows;r++){
+for(let c=0;c<cols;c++){
+const span = document.createElement('span');
+span.className = 'watermark-item';
+span.innerText = text;
+span.style.left = `${c*140}px`;
+span.style.top = `${r*110}px`;
+wrap.appendChild(span);
+}
+}
+})();
+
 </script>
+<div class="watermark-layer"></div>
+
+  
 </div>
 </body>
 </html>
