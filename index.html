@@ -11,6 +11,21 @@
 --bg:#f1f3f5;--card:#fff;--text:#212529;--muted:#868e96;--border:#e9ecef;
 --radius:16px;--shadow:0 2px 8px rgba(0,0,0,.06);--shadow-lg:0 4px 16px rgba(0,0,0,.1);
 }
+  
+.watermark-layer{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:9999;
+  overflow:hidden;
+}
+.watermark-item{
+  position:absolute;
+  color:rgba(128,128,128,0.18);
+  font-size:16px;
+  white-space:nowrap;
+  transform:rotate(-20deg);
+}  
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
 .container{max-width:520px;margin:0 auto;padding:16px;padding-bottom:24px}
