@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>🇪🇸 DELE B1 冲刺题库 · 180天</title>
+<title>🇪🇸 🐣 DELE B1 冲刺题库 · 180天</title>
 <style>
 :root{
 --primary:#e8590c;--primary-light:#fff4e6;--primary-dark:#d9480f;
@@ -16,16 +16,17 @@
   position:fixed;
   inset:0;
   pointer-events:none;
-  z-index:9999;
+  z-index:99999;
   overflow:hidden;
 }
 .watermark-item{
   position:absolute;
-  color:rgba(128,128,128,0.18);
+  color:rgba(128,128,128,0.07); /* 透明度0.07，若有若无；可微调 0.06~0.09 */
   font-size:16px;
   white-space:nowrap;
   transform:rotate(-20deg);
-}  
+}
+<style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
 .container{max-width:520px;margin:0 auto;padding:16px;padding-bottom:24px}
@@ -920,5 +921,34 @@ if (document.readyState !== 'loading') {
 <div class="watermark-layer"></div>
   
 </div>
+<script>
+// 水印文字
+const watermarkText = "阿蛋的 DELE 题库";
+// 水印生成函数
+function createWatermark() {
+  const watermarkDom = document.querySelector('.watermark-layer');
+  if(!watermarkDom) return;
+  watermarkDom.innerHTML = '';
+  const gapX = 260; // 横向间距，越大水印越稀疏
+  const gapY = 200; // 纵向间距
+  const countX = Math.ceil(window.innerWidth / gapX);
+  const countY = Math.ceil(window.innerHeight / gapY);
+
+  for(let i = 0; i < countX; i++){
+    for(let j = 0; j < countY; j++){
+      const item = document.createElement('div');
+      item.className = "watermark-item";
+      item.innerText = watermarkText;
+      item.style.left = i * gapX + 'px';
+      item.style.top = j * gapY + 'px';
+      watermarkDom.appendChild(item);
+    }
+  }
+}
+
+window.addEventListener('load', createWatermark);
+window.addEventListener('resize', createWatermark);
+</script>
+<div class="watermark-layer"></div>
 </body>
 </html>
